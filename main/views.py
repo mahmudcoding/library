@@ -4,7 +4,7 @@ from main.models import *
 
 @api_view(['GET'])
 def getBooks(request):
-    books = {}
+    books = {} 
     for book in Book.objects.all():
         books[str(book.id)] = {
             'title': book.title,
@@ -124,7 +124,7 @@ def addBook(request):
             isReserved=data['isReserved'].lower() == 'true',
             reserved_person_id=int(data['reserved_person_id'])
         )
-        return JsonResponse({'status': 'success', 'book_id': book.id})
+        return JsonResponse({'status': 'success', 'id': book.id})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
 
@@ -140,7 +140,7 @@ def addPerson(request):
             role=data['role'],
             library_id=int(data['library_id'])
         )
-        return JsonResponse({'status': 'success', 'person_id': person.id})
+        return JsonResponse({'status': 'success', 'id': person.id})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
 
@@ -152,7 +152,7 @@ def addLibrary(request):
             name=data['name'],
             location=data['location']
         )
-        return JsonResponse({'status': 'success', 'library_id': library.id})
+        return JsonResponse({'status': 'success', 'id': library.id})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
 
