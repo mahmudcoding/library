@@ -10,13 +10,13 @@ def getBooks(request):
             'title': book.title,
             'author': book.author,
             'isAvailable': book.isAvailable,
-            'library_id': book.library_id,
-            'place_number': book.place_number,
+            'libraryId': book.library_id,
+            'placeNumber': book.place_number,
             'isBorrowed': book.isBorrowed,
-            'borrowed_person_id': book.borrowed_person_id,
-            'return_date': book.return_date,
+            'borrowedPersonId': book.borrowed_person_id,
+            'returnDate': book.return_date,
             'isReserved': book.isReserved,
-            'reserved_person_id': book.reserved_person_id
+            'reservedPersonId': book.reserved_person_id
             }
         
     return JsonResponse(books)
@@ -31,7 +31,7 @@ def getPersons(request):
             'login': person.login,
             'password': person.password,
             'role': person.role,
-            'library_id': person.library_id,
+            'libraryId': person.library_id,
         }
         
     return JsonResponse(persons)
@@ -56,13 +56,13 @@ def updateBook(request):
         book.title = data['title']
         book.author = data['author']
         book.isAvailable = data['isAvailable'].lower() == 'true'
-        book.library_id = int(data['library_id'])
-        book.place_number = int(data['place_number'])
+        book.library_id = int(data['libraryId'])
+        book.place_number = int(data['placeNumber'])
         book.isBorrowed = data['isBorrowed'].lower() == 'true'
-        book.borrowed_person_id = int(data['borrowed_person_id'])
-        book.return_date = data['return_date']
+        book.borrowed_person_id = int(data['borrowedPersonId'])
+        book.return_date = data['returnDate']
         book.isReserved = data['isReserved'].lower() == 'true'
-        book.reserved_person_id = int(data['reserved_person_id'])
+        book.reserved_person_id = int(data['reservedPersonId'])
         book.save()
 
         return JsonResponse({'status': 'success'})
@@ -82,7 +82,7 @@ def updatePerson(request):
         person.login = data['login']
         person.password = data['password']          
         person.role = data['role']
-        person.library_id = int(data['library_id'])
+        person.library_id = int(data['libraryId'])
         person.save()
 
         return JsonResponse({'status': 'success'})
@@ -116,13 +116,13 @@ def addBook(request):
             title=data['title'],
             author=data['author'],
             isAvailable=data['isAvailable'].lower() == 'true',
-            library_id=int(data['library_id']),
-            place_number=int(data['place_number']),
+            library_id=int(data['libraryId']),
+            place_number=int(data['placeNumber']),
             isBorrowed=data['isBorrowed'].lower() == 'true',
-            borrowed_person_id=int(data['borrowed_person_id']),
-            return_date=data['return_date'],
+            borrowed_person_id=int(data['borrowedPersonId']),
+            return_date=data['returnDate'],
             isReserved=data['isReserved'].lower() == 'true',
-            reserved_person_id=int(data['reserved_person_id'])
+            reserved_person_id=int(data['reservedPersonId'])
         )
         return JsonResponse({'status': 'success', 'id': book.id})
     except Exception as e:
@@ -138,7 +138,7 @@ def addPerson(request):
             login=data['login'],
             password=data['password'],
             role=data['role'],
-            library_id=int(data['library_id'])
+            library_id=int(data['libraryId'])
         )
         return JsonResponse({'status': 'success', 'id': person.id})
     except Exception as e:
