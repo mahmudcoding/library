@@ -90,7 +90,7 @@ def addBook(request):
             isAvailable=data['isAvailable'].lower() == 'true',
             rack_number=int(data['rackNumber']),
             subject=data['subject'],
-            publication_date=int(data['publication_date']),
+            publication_date=int(data['publicationDate']),
             isBorrowed=data['isBorrowed'].lower() == 'true',
             borrowed_person_id=int(data['borrowedPersonId']),
             return_date=data['returnDate'],
