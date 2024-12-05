@@ -4,7 +4,7 @@ from .models import Book, Person
 # Book Admin Configuration
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'author', 'isAvailable', 'isBorrowed', 'isReserved', 'place_number')
+    list_display = ('id', 'title', 'author', 'isAvailable', 'isBorrowed', 'isReserved', 'rack_number')
     search_fields = ('title', 'author')
     list_filter = ('isAvailable', 'isBorrowed', 'isReserved')
     ordering = ('id',)

@@ -10,7 +10,9 @@ def getBooks(request):
             'title': book.title,
             'author': book.author,
             'isAvailable': book.isAvailable,
-            'placeNumber': book.place_number,
+            'rackNumber': book.rack_number,
+            'subject': book.subject,
+            'publicationDate': book.publication_date,
             'isBorrowed': book.isBorrowed,
             'borrowedPersonId': book.borrowed_person_id,
             'returnDate': book.return_date,
@@ -43,7 +45,9 @@ def updateBook(request):
         book.title = data['title']
         book.author = data['author']
         book.isAvailable = data['isAvailable'].lower() == 'true'
-        book.place_number = int(data['placeNumber'])
+        book.rack_number = int(data['rackNumber'])
+        book.subject = data['subject']
+        book.publication_date = int(data['publicationDate'])
         book.isBorrowed = data['isBorrowed'].lower() == 'true'
         book.borrowed_person_id = int(data['borrowedPersonId'])
         book.return_date = data['returnDate']
@@ -84,7 +88,9 @@ def addBook(request):
             title=data['title'],
             author=data['author'],
             isAvailable=data['isAvailable'].lower() == 'true',
-            place_number=int(data['placeNumber']),
+            rack_number=int(data['rackNumber']),
+            subject=data['subject'],
+            publication_date=int(data['publication_date']),
             isBorrowed=data['isBorrowed'].lower() == 'true',
             borrowed_person_id=int(data['borrowedPersonId']),
             return_date=data['returnDate'],
